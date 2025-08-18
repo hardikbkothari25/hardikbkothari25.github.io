@@ -45,11 +45,14 @@
   </style>
 </head>
 <body>
-  <h1>To save Pigeon,please fill the form and send an email.</h1>
+  <h1>Pigeon feeding Appeal to BMC,P  lease fill the form and send an email.</h1>
   <form onsubmit="sendEmail(event)">
     <label for="name">Full Name (required)</label>
     <input type="text" id="name" name="name" required>
 
+    <label for="name">Nearest kabutar khana place (required)</label>
+    <input type="text" id="kabutarkhana" name="kabutarkhana" placeholder="Enter your nearest Mumbai/Thane/Miraroad kabutarkhana name here" required >
+    
     <label for="city">City (required)</label>
     <input type="text" id="city" name="city" required>
 
@@ -73,7 +76,8 @@
       let body = `Respected Sir/Madam,%0D%0A`;
       body += `I, humbly submit this application seeking permission to feed pigeons in a regulated, hygienic, and controlled manner, in compliance with the liberty granted by the Hon’ble Bombay High Court in the above-referenced order.%0D%0A%0D%0A`;
       body += `1. Purpose: - We aim to conduct monitored and controlled feeding of pigeons at a respective location within the ward while ensuring adherence to sanitary and safety protocols. We ensure court orders maintained.%0D%0A`;
-      body += `2. Feeding Spot: - Kindly note the following place where we urge to feed the Pigeons are as follows: __________________________________________________%0D%0A`;
+      body += `2. Feeding Spot: - Kindly note the following place where we urge to feed the Pigeons are as follows:%0D%0A`;
+      body += `${encodeURIComponent(kabutarkhana)}%0D%0A`;
       body += `3. Proposed Feeding Schedule: Feeding will only take place during fixed time slots to avoid nuisance:%0D%0A`;
       body += `• Morning: 7:30am to 8:30am%0D%0A`;
       body += `• Afternoon: 12:00 PM – 1:00 PM approx.%0D%0A`;
@@ -90,7 +94,8 @@
       if (mobile) body += `Mobile No: ${encodeURIComponent(mobile)}%0D%0A`;
 
       // Open email client
-      window.location.href = `mailto:hardikbkothari25@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+       window.location.href = `mailto:${suggestions@mcgm.gov.in}?bcc=${savepigeons108@gmail.com}&subject=${encodeURIComponent(subject)}&body=${body}`;
+      form.reset();
     }
   </script>
 </body>
