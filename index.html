@@ -45,7 +45,7 @@
   </style>
 </head>
 <body>
-  <h1>Pigeon feeding Appeal to BMC,P  lease fill the form and send an email.</h1>
+  <h1>Pigeon feeding Appeal to BMC,Please fill the form and send an email.</h1>
   <form onsubmit="sendEmail(event)">
     <label for="name">Full Name (required)</label>
     <input type="text" id="name" name="name" required>
@@ -65,10 +65,11 @@
   <script>
     function sendEmail(event) {
       event.preventDefault(); // stop form reload
-
+      const form = document.getElementById("contactForm");
       const name = document.getElementById("name").value;
       const city = document.getElementById("city").value;
       const mobile = document.getElementById("mobile").value;
+      const kabutarkhana = document.getElementById("kabutarkhana").value;
 
       const subject = "Suggestions and Application seeking permission to feed pigeons in controlled manner in accordance with liberty granted by the Hon’ble Bombay High Court's Orders dated 07.08.2025 & 13.08.2025 in W.P. (L) No. 21199 of 2025 and connected matters";
 
