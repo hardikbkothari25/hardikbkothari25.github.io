@@ -46,6 +46,7 @@
 </head>
 <body>
   <h1>Pigeon feeding Appeal to BMC,Please fill the form and send an email.</h1>
+  <h2>In line with the court’s order, the BMC has now opened a window for citizens to share their Pigeon feeding Appeal between August 18 and 29,2025. </h2>
   <form onsubmit="sendEmail(event)">
     <label for="name">Full Name (required)</label>
     <input type="text" id="name" name="name" required>
@@ -95,7 +96,7 @@
       if (mobile) body += `Mobile No: ${encodeURIComponent(mobile)}%0D%0A`;
 
       // Open email client
-       window.location.href = `mailto:${suggestions@mcgm.gov.in}?bcc=${savepigeons108@gmail.com}&subject=${encodeURIComponent(subject)}&body=${body}`;
+       window.location.href = `mailto:suggestions@mcgm.gov.in?bcc=savepigeons108@gmail.com&subject=${encodeURIComponent(subject)}&body=${body}`;
       form.reset();
     }
   </script>
