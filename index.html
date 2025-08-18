@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Save Pigeon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>To save Pigeon,please fill the form and send an email.</h1>
+  <form onsubmit="sendEmail(event)">
+    <label for="name">Full Name (required)</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="city">City (required)</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="mobile">Mobile No.</label>
+    <input type="text" id="mobile" name="mobile">
+
+    <button type="submit">📧 Send Email</button>
+  </form>
+
+  <script>
+    function sendEmail(event) {
+      event.preventDefault(); // stop form reload
+
+      const name = document.getElementById("name").value;
+      const city = document.getElementById("city").value;
+      const mobile = document.getElementById("mobile").value;
+
+      const subject = "Suggestions and Application seeking permission to feed pigeons in controlled manner in accordance with liberty granted by the Hon’ble Bombay High Court's Orders dated 07.08.2025 & 13.08.2025 in W.P. (L) No. 21199 of 2025 and connected matters";
+
+      // Build body text with proper newlines
+      let body = `Respected Sir/Madam,%0D%0A`;
+      body += `I, humbly submit this application seeking permission to feed pigeons in a regulated, hygienic, and controlled manner, in compliance with the liberty granted by the Hon’ble Bombay High Court in the above-referenced order.%0D%0A%0D%0A`;
+      body += `1. Purpose: - We aim to conduct monitored and controlled feeding of pigeons at a respective location within the ward while ensuring adherence to sanitary and safety protocols. We ensure court orders maintained.%0D%0A`;
+      body += `2. Feeding Spot: - Kindly note the following place where we urge to feed the Pigeons are as follows: __________________________________________________%0D%0A`;
+      body += `3. Proposed Feeding Schedule: Feeding will only take place during fixed time slots to avoid nuisance:%0D%0A`;
+      body += `• Morning: 7:30am to 8:30am%0D%0A`;
+      body += `• Afternoon: 12:00 PM – 1:00 PM approx.%0D%0A`;
+      body += `• Evening: 4:00 PM – 5:00 PM approx.%0D%0A`;
+      body += `Feeding outside these hours will be strictly prohibited.%0D%0A%0D%0A`;
+      body += `4. Cleanliness and Hygiene: We shall ensure: Use of only clean, dry, and additive-free grains in controlled quantities. No leftover grains will remain post feeding. Cleaning of the feeding area after day session at 6pm daily.%0D%0A%0D%0A`;
+      body += `5. Background and Urgency:%0D%0AAs your esteemed office is aware, birds in urban environments struggle to find natural food sources. With rapid urbanization, many pigeons have been found starving, leading to avoidable deaths due to hunger and in search of finding food on roads, in movement leading to accidents.%0D%0A%0D%0A`;
+      body += `We would like to draw your kind attention to the distressing fact that hundreds of pigeons are dying due to starvation. We urgently request immediate relief by allowing partial / controlled feeding as our suggestion. We sincerely request you to treat this matter as extremely urgent. A timely decision will help save the lives of thousands of pigeons.%0D%0A%0D%0A`;
+      body += `We hope for your kind consideration and immediate action in this matter.%0D%0AThanking you.%0D%0A%0D%0A`;
+
+      // Append user inputs
+      body += `Name: ${encodeURIComponent(name)}%0D%0A`;
+      body += `City: ${encodeURIComponent(city)}%0D%0A`;
+      if (mobile) body += `Mobile No: ${encodeURIComponent(mobile)}%0D%0A`;
+
+      // Open email client
+      window.location.href = `mailto:hardikbkothari25@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
