@@ -42,19 +42,24 @@
     button:hover {
       background: #0056b3;
     }
+  .required-field::before {
+  content: "*";
+  color: red;
+  float: right;
+}
   </style>
 </head>
 <body>
   <h1>Pigeon feeding Appeal to BMC,Please fill the form and send an email.</h1>
   <span>In line with the court’s order, the BMC has now opened a window for citizens to share their Pigeon feeding Appeal between August 18 and 29,2025. </span>
   <form id="emailForm" onsubmit="sendEmail(event)">
-    <label for="name">Full Name (required)</label>
+    <label for="name" class="required-field">Full Name</label>
     <input type="text" id="name" name="name" required>
 
-    <label for="name">Nearest kabutar khana place (required)</label>
+    <label for="name" class="required-field">Nearest kabutar khana place </label>
     <input type="text" id="kabutarkhana" name="kabutarkhana" placeholder="Enter your nearest Mumbai/Thane/Miraroad kabutarkhana name here" required >
     
-    <label for="city">City (required)</label>
+    <label for="city" class="required-field">City</label>
     <input type="text" id="city" name="city" required>
 
     <label for="mobile">Mobile No.</label>
