@@ -1,72 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pigeon feeding Appeal to BMC</title>
+
+  <!-- Optional: clean modern font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background: #f9f9f9;
+    :root{
+      --bg: #0f172a;        /* slate-900 */
+      --card:#0b1224;       /* slightly lighter */
+      --acc:#60a5fa;        /* blue-400 */
+      --acc-2:#3b82f6;      /* blue-500 */
+      --text:#e5e7eb;       /* gray-200 */
+      --muted:#94a3b8;      /* slate-400 */
+      --ok:#22c55e;
+      --err:#ef4444;
+      --ring:#93c5fd;
     }
-    h1 {
-      text-align: center;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.25), transparent 60%),
+        radial-gradient(900px 500px at -10% 10%, rgba(96,165,250,.22), transparent 55%),
+        var(--bg);
     }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
+    .wrap{
+      max-width:960px;
+      margin:0 auto;
+      padding:32px 20px 80px;
     }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #aaa;
+    header{
+      text-align:center;
+      margin-bottom:28px;
     }
-    button {
-      margin-top: 20px;
-      padding: 12px;
-      background: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      width: 100%;
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      background:rgba(96,165,250,.12); color:#cfe3ff;
+      border:1px solid rgba(96,165,250,.35);
+      padding:6px 10px; border-radius:999px; font-size:12px; letter-spacing:.2px;
     }
-    button:hover {
-      background: #0056b3;
+    h1{
+      margin:12px 0 10px; font-size:clamp(26px,4vw,36px); line-height:1.15;
+      letter-spacing:.2px;
     }
-  .required-field::before {
-  content: "*";
-  color: red;
-  float: right;
-}
+    .sub{ color:var(--muted); max-width:60ch; margin:0 auto 18px; }
+    .grid{
+      display:grid; grid-template-columns:1fr; gap:18px;
+    }
+    @media(min-width:900px){
+      .grid{ grid-template-columns:1.1fr .9fr; align-items:start; }
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(148,163,184,.2);
+      border-radius:16px; padding:22px;
+      box-shadow: 0 10px 30px rgba(2,6,23,.35), inset 0 1px rgba(255,255,255,.06);
+      backdrop-filter: saturate(120%) blur(3px);
+    }
+    label{
+      display:block; font-weight:600; margin-bottom:6px;
+    }
+    .req::after{content:" *"; color:#fca5a5; font-weight:700}
+    .field{
+      width:100%; padding:12px 14px; border-radius:10px;
+      border:1px solid rgba(148,163,184,.25); background:#0b1224; color:var(--text);
+      outline:none; transition:.15s border-color, .15s box-shadow;
+    }
+    .field:focus{
+      border-color:var(--ring);
+      box-shadow:0 0 0 3px rgba(147,197,253,.25);
+    }
+    .hint{ font-size:12px; color:var(--muted); margin-top:6px }
+    .btn{
+      width:100%; padding:14px 16px; border:none; border-radius:12px;
+      background:linear-gradient(90deg, var(--acc), var(--acc-2));
+      color:white; font-weight:700; letter-spacing:.3px; cursor:pointer;
+      transition:.2s transform,.2s filter;
+    }
+    .btn:hover{ filter:brightness(1.07) }
+    .btn:active{ transform:translateY(1px) }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btn-ghost{
+      flex:1; min-width:220px;
+      padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.3);
+      background:transparent; color:var(--text); cursor:pointer;
+    }
+    .status{
+      display:none; margin-top:12px; padding:10px 12px; border-radius:10px; font-size:14px;
+    }
+    .ok{ display:none; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.35); color:#d1fadf }
+    .err{ display:none; background:rgba(239,68,68,.12); border:1px solid rgba(239,68,68,.35); color:#fee2e2 }
+    .mini{ font-size:12px; color:var(--muted); margin-top:14px }
+    ul.check{
+      margin:10px 0 0 0; padding-left:18px; line-height:1.65; color:#cbd5e1;
+    }
+    .kicker{ font-size:13px; text-transform:uppercase; letter-spacing:.22em; color:#c7dfff; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    footer{ margin-top:26px; text-align:center; color:var(--muted); font-size:12px }
   </style>
+
+  <!-- OPTIONAL: Google Analytics (replace G-XXXXXXXXXX) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <!-- EmailJS SDK (for direct sending from browser) -->
+  <!--<script src="https://cdn.emailjs.com/dist/email.min.js"></script>-->
 </head>
 <body>
-  <h1>Pigeon feeding Appeal to BMC,Please fill the form and send an email.</h1>
-  <span>In line with the court’s order, the BMC has now opened a window for citizens to share their Pigeon feeding Appeal between August 18 and 29,2025. </span>
-  <form id="emailForm" onsubmit="sendEmail(event)">
-    <label for="name" class="required-field">Full Name</label>
-    <input type="text" id="name" name="name" required>
+  <div class="wrap">
+    <header>
+      <span class="badge">🕊️ Community Care for Pigeons</span>
+      <h1>Pigeon feeding Appeal to BMC,Please fill the form and send an email.</h1>
+      <p class="sub">
+        In line with the court’s order, the BMC has now opened a window for citizens to share their Pigeon feeding Appeal between August 18 and 29,2025. 
+      </p>
+    </header>
 
-    <label for="name" class="required-field">Nearest kabutar khana place </label>
-    <input type="text" id="kabutarkhana" name="kabutarkhana" placeholder="Enter your nearest Mumbai/Thane/Miraroad kabutarkhana name here" required >
-    
-    <label for="city" class="required-field">City</label>
-    <input type="text" id="city" name="city" required>
+    <div class="grid">
+      <!-- FORM CARD -->
+      <section class="card">
+        <div class="kicker">Your Details</div>
+        <form id="emailForm" onsubmit="sendEmail(event)">
+          <div style="margin-top:12px">
+            <label class="req" for="name">Full Name</label>
+            <input class="field" id="name" name="name" type="text" placeholder="e.g., Asha Mehta" required />
+          </div>
+<div style="margin-top:14px">
+            <label class="req" for="Kabutarkhana">Kabutarkhana</label>
+            <input class="field" id="kabutarkhana" name="kabutarkhana" type="text" placeholder="Enter your nearest Mumbai/Thane/Miraroad kabutarkhana name here" required />
+          </div>
+          <div style="margin-top:14px">
+            <label class="req" for="city">City</label>
+            <input class="field" id="city" name="city" type="text" placeholder="e.g., Mumbai" required />
+          </div>
 
-    <label for="mobile">Mobile No.</label>
-    <input type="text" id="mobile" name="mobile">
+          <div style="margin-top:14px">
+            <label for="mobile">Mobile No. (optional)</label>
+            <input class="field" id="mobile" name="mobile" type="tel" inputmode="numeric" pattern="[0-9\s+\-()]{7,15}" placeholder="+91 98765 43210" />
+            <div class="hint">Digits, +, -, ( ) allowed</div>
+          </div>
 
-    <button type="submit">📧 Send Email</button>
-  </form>
+          <div class="actions" style="margin-top:18px">
+            <button type="submit" class="btn">📧 Send Request</button> 
+          </div>          
+        </form>
+      </section>
+
+      <!-- INFO CARD -->
+      <aside class="card">
+        <div class="kicker">What we propose</div>
+        <ul class="check">
+          <li><strong>Controlled feeding</strong> at designated spots and fixed time slots only.</li>
+          <li>Use of <strong>clean, additive-free grains</strong> in limited quantities.</li>
+          <li><strong>Clean-up</strong> after sessions to maintain hygiene and public safety.</li>
+          <li>Alignment with court-granted liberty and local guidelines.</li>
+        </ul>
+        <p class="mini" style="margin-top:14px">
+          Your email will include the full application text plus your details (Name, City,Kabutarkhana name and Mobile).
+        </p>
+        <hr style="border:none; border-top:1px solid rgba(148,163,184,.25); margin:16px 0">
+        <div class="kicker">Who receives this</div>
+        <p class="mini">
+          <span class="mono">suggestions@mcgm.gov.in</span>          
+        </p>
+      </aside>
+    </div>
+
+    <footer>© 2025 Pigeon Care Initiative • Built for GitHub Pages</footer>
+  </div>
 
   <script>
     function sendEmail(event) {
