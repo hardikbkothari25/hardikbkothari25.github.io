@@ -121,8 +121,19 @@
 
   <!-- EmailJS SDK (for direct sending from browser) -->
   <!--<script src="https://cdn.emailjs.com/dist/email.min.js"></script>-->
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PXLRMR25');</script>
+<!-- End Google Tag Manager -->
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXLRMR25"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <div class="wrap">
     <header>
       <span class="badge">🕊️ Community Care for Pigeons</span>
@@ -193,7 +204,15 @@
       const city = document.getElementById("city").value;
       const mobile = document.getElementById("mobile").value;
       const kabutarkhana = document.getElementById("kabutarkhana").value;
-
+      // ✅ Push data to GTM
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'formSubmission',
+    'formName': name,
+    'formCity': city,
+    'formMobile': mobile,
+    'formKabutarkhana':kabutarkhana
+  });
       const subject = "Suggestions and Application seeking permission to feed pigeons in controlled manner in accordance with liberty granted by the Hon’ble Bombay High Court's Orders dated 07.08.2025 & 13.08.2025 in W.P. (L) No. 21199 of 2025 and connected matters";
 
       // Build body text with proper newlines
