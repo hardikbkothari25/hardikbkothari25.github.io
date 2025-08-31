@@ -123,15 +123,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <div class="wrap">
     <header>      
-      <h1>Pigeon feeding Appeal to BMC,Please fill the secured form and send an email.</h1>
-      <p class="sub">
+      <h1>Pigeon feeding Application to BMC,Please fill the secured form and send an email.</h1>
+      <!--<p class="sub">
         In line with the court’s order, the BMC has now opened a window for citizens to share their Pigeon feeding Appeal between August 18 and 29,2025.
         <br/>
         કોર્ટના આદેશ અનુસાર, BMC એ હવે નાગરિકો ને 18 ઓગસ્ટ થી 29,2025 દરમિયાન કબૂતર ને દાણા પાણી આપવા માટે ના અભિપ્રાય ઇમેઇલ કરવા માટે કહ્યું છે.
         <br/>
         अदालत के आदेश के अनुसार, बीएमसी ने अब नागरिकों से 18 से 29 अगस्त, 2025 के बीच कबूतरों को पानी और भोजन उपलब्ध कराने पर अपनी राय ईमेल करने को कहा है।         
       </p>
-      <br/>
+      <br/>-->
       <!--<p>Thank you for your kind support and sending an email to BMC with suggestions.Email submission window is closed.</p>-->
     </header>
 
@@ -141,11 +141,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="kicker">Your Details/તમારી વિગત/आपका विवरण</div>
         <form id="emailForm" onsubmit="sendEmail(event)">
           <div style="margin-top:12px">
-            <label class="req" for="name">Full Name/નામ/नाम </label>
+            <label class="req" for="name">Applicant Full Name / નામ / नाम </label>
             <input class="field" id="name" name="name" type="text" placeholder="e.g., Asha Mehta" required />
           </div>
           <div style="margin-top:14px">
-            <label class="req" for="Kabutarkhana">Kabutarkhana/કબૂતર ખાના/कबूतर घर </label>
+            <label class="req" for="Kabutarkhana">Nearest Kabutarkhana where you want to feed / નજીકનું કબુતરખાનું જ્યાં તમે દાણા પાણી આપવા માંગો છો / निकटतम कबूतरखाना जहाँ आप दाना पानी खिलाना चाहते हैं </label>
             <input class="field" id="kabutarkhana" name="kabutarkhana" type="text" placeholder="Nearest kabutarkhana name e.g.,Dadar/Borivali/Colaba/Parel/Bandra etc.." required />
           </div>
           <div style="margin-top:14px">
@@ -203,7 +203,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     'formCity': city,    
     'formKabutarkhana':kabutarkhana
   });
-      const subject = "Suggestions and Application seeking permission to feed pigeons in controlled manner in accordance with liberty granted by the Hon’ble Bombay High Court's Orders dated 07.08.2025 & 13.08.2025 in W.P. (L) No. 21199 of 2025 and connected matters";
+      const subject = "Application to BMC as suggestions seeking permission to feed pigeons in controlled manner in accordance with liberty granted by the Hon’ble Bombay High Court's Orders dated 07.08.2025 & 13.08.2025 in W.P. (L) No. 21199 of 2025 and connected matters";
 
       // Build body text with proper newlines
       let body = `Respected Sir/Madam,%0D%0A`;
@@ -227,7 +227,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (mobile) body += `Mobile No: ${encodeURIComponent(mobile)}%0D%0A`;
 
       // Open email client
-       window.location.href = `mailto:suggestions@mcgm.gov.in?bcc=savepigeons108@gmail.com&subject=${encodeURIComponent(subject)}&body=${body}`;
+       window.location.href = `mailto:suggestions@mcgm.gov.in?cc=mc@mcgm.gov.in&bcc=savepigeons108@gmail.com&subject=${encodeURIComponent(subject)}&body=${body}`;
       form.reset();
     }
   </script>
